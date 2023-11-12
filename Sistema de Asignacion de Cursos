@@ -1,0 +1,222 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+       
+ 
+		Scanner scanner = new Scanner(System.in);
+		int escuela , semestre, cur;
+		String semestreL = "";
+		
+		System.out.println("================= SISTEMA DE ASIGNACION DE CURSOS ===================");
+		System.out.println("========= FACULTAD DE INGENIERIA DE SISTEMAS E INFORMATICA ==========");
+		do {
+			System.out.println("INGRESE LA ESCUELA PROFESIONAL: \nINGENIERIA DE SISTEMAS         [1]\nINGENIERIA DE SOFTWARE         [2]\nCIENCIAS DE LA COMPUTACION     [3]");
+			escuela = scanner.nextInt();
+		}while(escuela != 1 && escuela !=2 && escuela != 3);
+		String escuelaL="";
+		switch(escuela) {
+		case 1: escuelaL = "NGENIERIA DE SISTEMAS"; break;
+		case 2: escuelaL = "INGENIERIA DE SOFTWARE"; break;
+		case 3: escuelaL = "CIENCIAS DE LA COMPUTACION"; break;
+		}
+		do {
+			System.out.println("INGRESE EL SEMESTRE ACADEMICO: \n2023 I      [1]\n2023 II     [2]\n2024 I      [3]\n2024 II     [4]");
+			semestre = scanner.nextInt();
+		}while(semestre != 1 && semestre != 2 && semestre != 3 && semestre != 4);
+		switch(semestre) {
+		case 1:
+			semestreL = "2023 I";
+			break;
+		case 2:
+			semestreL = "2023 II";
+			break;	
+		case 3:
+			semestreL = "2024 I";
+			break;
+		case 4:
+			semestreL = "2024 II";
+			break;		
+		}
+		do {
+			System.out.println("INGRESE EL NUMERO DE CURSOS A IMPLEMENTAR PARA EL SEMESTRE: "+ semestreL);
+			cur = scanner.nextInt();
+		}while(cur <= 0);
+		
+		Curso[] cursos = new Curso[cur];
+		
+	
+		
+		boolean[] lunes = new boolean[24];
+		boolean[] martes = new boolean[24];
+		boolean[] miercoles = new boolean[24];
+		boolean[] jueves = new boolean[24];
+		boolean[] viernes = new boolean[24];
+		boolean[] sabado = new boolean[24];
+		boolean[] domingo = new boolean[24];
+		
+		
+		for(int i=0;i<cur;i++) {
+			System.out.println("========= CURSO "+ (i+1)+" =========");
+			
+			scanner.nextLine();
+			String codigo = "";
+			do {
+				System.out.print("Ingrese el codigo: ");
+				codigo = scanner.nextLine();
+			}while(!codigo.equals("INO101") && !codigo.equals("INO102") && !codigo.equals("INO103") && !codigo.equals("INO104") && !codigo.equals("INO105") && !codigo.equals("INO106") && !codigo.equals("INO107"));
+			
+			System.out.print("Ingrese el grupo: ");
+			int grupo = scanner.nextInt();
+			
+			int tip;
+			do {
+				System.out.println("Ingrese el tipo:\nTeoria          [1]\nPractica        [2]\nLaboratorio     [3]");
+				tip = scanner.nextInt();
+			}while(tip != 1 && tip != 2 && tip != 3);
+			
+			String tipo = "";
+			switch(tip) {
+			case 1 :  tipo = "Teoria"; break;
+			case 2 : tipo = "Practica"; break;
+			case 3: tipo = "Laboratorio"; break;
+			default :
+				System.out.print("Error"); break;
+			}
+			
+			scanner.nextLine();
+			System.out.print("Ingrese el docente: ");
+			String docente = scanner.nextLine();
+			
+			int dia;
+			do {
+				System.out.println("Ingrese el dia: \nLunes          [1]\nMartes         [2]\nMiercoles      [3]\nJueves         [4]\nViernes        [5]\nSabado         [6]\nDomingo        [7]");
+				dia = scanner.nextInt();
+			}while(dia != 1 && dia != 2 && dia != 3 && dia != 4 && dia != 5 && dia != 6 && dia != 7 );
+			String diaL = "";
+			switch(dia) {
+			case 1: diaL = "Lunes"; break;
+			case 2: diaL = "Martes"; break;
+			case 3: diaL = "Miercoles"; break;
+			case 4: diaL = "Jueves"; break;
+			case 5: diaL = "Viernes"; break;
+			case 6: diaL = "Sabado"; break;
+			case 7: diaL = "Domingo"; break;
+			}
+			int a=0;
+			do {
+				
+				System.out.print("Ingrese la hora de inicio, (00 - 23) hora internacional: ");
+				int inicio = scanner.nextInt();
+				
+				System.out.print("Ingrese la hora de salida: ");
+				int salida = scanner.nextInt();
+				
+				cursos[i] = new Curso(escuelaL, semestreL, codigo, grupo, tipo, docente, diaL, inicio, salida );
+				
+				
+				switch(dia) {
+				case 1: 
+					for(int j=inicio;j<salida-1;j++) {
+						if(lunes[j]==false)lunes[j] = true;
+						else a=1;
+					}
+					break;
+				case 2: 
+					for(int j=inicio;j<salida-1;j++) {
+						if(martes[j]==false)martes[j] = true;
+						else a=1;
+					}
+					break;
+				case 3: 
+					for(int j=inicio;j<salida-1;j++) {
+						if(miercoles[j]==false)miercoles[j] = true;
+						else a=1;
+					}
+					break;
+				case 4: 
+					for(int j=inicio;j<salida-1;j++) {
+						if(jueves[j]==false)jueves[j] = true;
+						else a=1;
+					}
+					break;
+				case 5: 
+					for(int j=inicio;j<salida-1;j++) {
+						if(viernes[j]==false)viernes[j] = true;
+						else a=1;
+					}
+					break;
+				case 6: 
+					for(int j=inicio;j<salida-1;j++) {
+						if(sabado[j]==false)sabado[j] = true;
+						else a=1;
+					}
+					break;
+				case 7: 
+					for(int j=inicio;j<salida-1;j++) {
+						if(domingo[j]==false)domingo[j] = true;
+						else a=1;
+					}
+					break;	
+				}
+				if(a==1)System.out.println("Espacio ocupado, elija otro horario.");
+				else System.out.println("Espacio libre, correcto");
+			}while(a==1);	
+			
+		}
+		scanner.close();
+		
+		
+	}
+
+	
+}
+class Curso{
+	String escuela;
+	String semestre;
+	String codigo;
+	int grupo;
+	String tipo;
+	String docente;
+	String dia;
+	int horadeinicio;
+	int horadesalida;
+	
+	int creditos;
+	String asignatura;
+	int horas;
+	
+	
+	
+	
+	Curso(String escuela, String semestre, String codigo, int grupo, String tipo, String docente, String diaL, int  inicio, int salida){
+		this.escuela = escuela;
+		this.semestre = semestre;
+		this.codigo = codigo;
+		this.grupo = grupo;
+		this.tipo = tipo;
+		this.docente = docente;
+		this.dia = diaL;
+		this.horadeinicio = inicio;
+		this.horadesalida = salida;
+		
+		switch(codigo) {
+			case "INO101": asignatura = "CALCULO I"; creditos = 4; break;
+			case "INO102": asignatura = "CALCULO II"; creditos = 4; break;
+			case "INO103": asignatura = "ALGEBRA Y GEOMETRIA ANALITICA"; creditos = 4; break;
+			case "INO104": asignatura = "REDACCION Y TECNICAS DE COMUNICACION EFECTIVA"; creditos = 3; break;
+			case "INO105": asignatura = "INVESTIGACION FORMATIVA"; creditos = 2; break;
+			case "INO106": asignatura = "FISICA I"; creditos = 2; break;
+			case "INO107": asignatura = "QUIMICA GENERAL"; creditos = 3; break;
+			case "INO108": asignatura = "INTRODUCCION AL DESARROLLO DE SOFTWARE"; creditos = 2; break;
+			default: System.out.println("ERROR 00304=504//////0000"); break;
+		}
+		
+		this.horas = Math.abs(inicio - salida);
+		
+		
+		
+	}
+}
+
+
