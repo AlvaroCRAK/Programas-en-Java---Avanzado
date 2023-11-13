@@ -31,12 +31,13 @@ public class Main2{
 		 boolean[] domingob = new boolean[24];
 		
 		for(int i=0;i<cursos;i++) {
+		
 			
 			System.out.println("Ingrese la asignatura:                                                                                                        10 letras");
 			String asignatura = scanner.nextLine();
 			
 			
-			System.out.print("Ingrese el docente a dictar: ");
+			System.out.println("Ingrese el docente a dictar: ");
 			String docente = scanner.nextLine();
 			while (!docente.equals("IVAN PETRLIK") && !docente.equals("VILMA PERALTA") && !docente.equals("JUAN GAMARRA") && !docente.equals("JORGE ZAVALETA") && !docente.equals("ARREDONDO GUSTAVO")) {
 				System.out.print("Ingrese bien el nobre del docente: ");
@@ -44,29 +45,37 @@ public class Main2{
 			}
 			char doc = asignarDocente(docente);
 			
-			System.out.println("Ingrese el dia: \nLunes   [1]\nMartes [2]\nMiercoles [3]\nJueves [4]\nViernes [5]\nSabado [6]\nDomingo [7]");
+			System.out.println("Ingrese el dia: \nLunes     [1]\nMartes    [2]\nMiercoles [3]\nJueves    [4]\nViernes   [5]\nSabado    [6]\nDomingo   [7]");
 			int dian = scanner.nextInt();
 			
 			String dia = llenarDia(dian);
 			
-			System.out.println("Ingrese la hora de manera de 00:00 a 23:59;");
-			System.out.print("Ingrese la hora de inicio: ");
-			int inicio = scanner.nextInt();
-			
-			System.out.print("Ingrese la hora de salida: ");
-			int salida = scanner.nextInt();
-			
 			int temp;
+			int inicio;
+			int salida;
 			do {
-				 temp =verificar(inicio, salida, dian, lunesb, martesb, miercolesb, juevesb, viernesb, sabadob, domingob, doc, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
-				 if(temp == 0)System.out.println("=============== REGISTRO CON EXITO ===============");
-				 else if(temp ==2)System.out.println("====== CRUCE DE PROFESOR ======");
-				 else if(temp ==1)System.out.println("======= CRUCE DE HORARIO ======");
-			}while (temp != 0);
 			
+				System.out.println("Ingrese la hora de manera de 00:00 a 23:59;");
+				System.out.print("Ingrese la hora de inicio: ");
+				inicio = scanner.nextInt();
+				
+				System.out.print("Ingrese la hora de salida: ");
+				salida = scanner.nextInt();
+				
+				
+				temp =verificar(inicio, salida, dian, lunesb, martesb, miercolesb, juevesb, viernesb, sabadob, domingob, doc, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+				if(temp == 0)System.out.println("=============== REGISTRO CON EXITO ===============");
+				else if(temp ==2) {System.out.println("====== CRUCE DE PROFESOR ======");
+				System.out.println("Vuelva a llenar el horario: \n");
+				}else if(temp != 0 ) {System.out.println("======= CRUCE DE HORARIO ======");
+				System.out.println("Vuelva a llenar el horario: \n");
+				}
+			}while(temp != 0);
 			
 			
 			curso[i] = new Curso(asignatura, docente, dia, inicio, salida);
+			
+			scanner.nextLine();
 		}
 		//================================================================ FIN DEL CICLO FOR =============================================================================================================================
 		System.out.println("=======================================================================");
@@ -110,7 +119,7 @@ public class Main2{
 		int b = 0;
 		switch(dia) {
 		case 1:
-			for(int i=inicio;i<salida-1;i++) {
+			for(int i=inicio;i<salida;i++) {
 				if(lunesb[i] == false && temp == 0 && lunes[i] == '\u0000') { 
 					lunes[i] = profesor;
 					lunesb[i] = true;
@@ -119,7 +128,7 @@ public class Main2{
 			}
 			break;
 		case 2:
-			for(int i=inicio;i<salida-1;i++) {
+			for(int i=inicio;i<salida;i++) {
 				if(martesb[i] == false && temp == 0 && martes[i] == '\u0000') { 
 					martes[i] = profesor;
 					martesb[i] = true;
@@ -128,7 +137,7 @@ public class Main2{
 			}
 			break;
 		case 3:
-			for(int i=inicio;i<salida-1;i++) {
+			for(int i=inicio;i<salida;i++) {
 				if(miercolesb[i] == false && temp == 0 && miercoles[i] == '\u0000') { 
 					miercoles[i] = profesor;
 					miercolesb[i] = true;
@@ -137,7 +146,7 @@ public class Main2{
 			}
 			break;
 		case 4:
-			for(int i=inicio;i<salida-1;i++) {
+			for(int i=inicio;i<salida;i++) {
 				if(juevesb[i] == false && temp == 0 && jueves[i] == '\u0000') { 
 					jueves[i] = profesor;
 					juevesb[i] = true;
@@ -155,7 +164,7 @@ public class Main2{
 			}
 			break;
 		case 6:
-			for(int i=inicio;i<salida-1;i++) {
+			for(int i=inicio;i<salida;i++) {
 				if(sabadob[i] == false && temp == 0 && sabado[i] == '\u0000') { 
 					sabado[i] = profesor;
 					sabadob[i] = true;
@@ -164,7 +173,7 @@ public class Main2{
 			}
 			break;
 		case 7:
-			for(int i=inicio;i<salida-1;i++) {
+			for(int i=inicio;i<salida;i++) {
 				if(domingob[i] == false && temp == 0 && domingo[i] == '\u0000') { 
 					domingo[i] = profesor;
 					domingob[i] = true;
@@ -173,7 +182,7 @@ public class Main2{
 			}
 			break;	
 		}
-		if(b==1) return 2;
+		if(b==1) return 3;
 		else return temp;
 	}
 	
@@ -194,9 +203,9 @@ public class Main2{
 		do {
 			int opc;
 			System.out.println("========= INGRESE LA OPCION A MOSTRAR =========");
-			System.out.println("Horario     [1]");
-			System.out.println("Curso - Profesor - Dia - Hora");
-			System.out.println("Salir");
+			System.out.println("Horario                         [1]");
+			System.out.println("Curso - Profesor - Dia - Hora   [2]");
+			System.out.println("Salir                           [3]");
 			opc = scanner.nextInt();
 			
 			switch(opc) {
@@ -209,29 +218,31 @@ public class Main2{
 				case 3:
 					break;
 				}
-			System.out.println("Desea continuar: \nSi  [1]\nNo  [2]");
+			System.out.println("Desea continuar: \nSi  [1]\nNo  [otro numero]");
 			con = scanner.nextInt();
-		}while(con != 1 && con!= 2);
+		}while(con == 1 );
 	}
 	
 	static void horario() {
+		
+		
 		System.out.println("==================================================================================================================================================================================");
     	System.out.println("||        HORA        ||        LUNES       ||        MARTES      ||      MIERCOLES     ||        JUEVES      ||       VIERNES      ||        SABADO      ||       DOMINGO      ||");
     	System.out.println("==================================================================================================================================================================================");
-    	System.out.println("||       8:00         ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       9:00         ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       11:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       12:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       13:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       14:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       15:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       16:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       17:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       18:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       19:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       20:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       21:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
-    	System.out.println("||       22:00        ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||        AAAAaa      ||");
+    	System.out.printf("||        8:00        ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[0], b[0], c[0], d[0], e[0], f[0], g[0]);
+    	System.out.printf("||        9:00        ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[1], b[1], c[1], d[1], e[1], f[1], g[1]);
+    	System.out.printf("||        11:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[2], b[2], c[2], d[2], e[2], f[2], g[2]);
+    	System.out.printf("||        12:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[3], b[3], c[3], d[3], e[3], f[3], g[3]);
+    	System.out.printf("||        13:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[4], b[4], c[4], d[4], e[4], f[4], g[4]);
+    	System.out.printf("||        14:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[5], b[5], c[5], d[5], e[5], f[5], g[5]);
+    	System.out.printf("||        15:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[6], b[6], c[6], d[6], e[6], f[6], g[6]);
+    	System.out.printf("||        16:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[7], b[7], c[7], d[7], e[7], f[7], g[7]);
+    	System.out.printf("||        17:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[8], b[8], c[8], d[8], e[8], f[8], g[8]);
+    	System.out.printf("||        18:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[9], b[9], c[9], d[9], e[9], f[9], g[9]);
+    	System.out.printf("||        19:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[10], b[10], c[10], d[10], e[10], f[10], g[10]);
+    	System.out.printf("||        20:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[11], b[11], c[11], d[11], e[11], f[11], g[11]);
+    	System.out.printf("||        21:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[12], b[12], c[12], d[12], e[12], f[12], g[12]);
+    	System.out.printf("||        22:00       ||       %sAAAAaa     ||       %%sAAAAa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", a[13], b[13], c[13], d[13], e[13], f[13], g[13]);
     	System.out.println("==================================================================================================================================================================================");
     	
 	}
@@ -240,6 +251,7 @@ public class Main2{
 		System.out.println();
 		for(int i=0;i<cursos;i++) {
 			System.out.println(curso[i].asignatura + " - " + curso[i].docente + " - " + curso[i].dia + " \n Hora: " + curso[i].inicio + " - " + curso[i].salida);
+			System.out.println();
 		}
 	}
 }
@@ -262,24 +274,7 @@ class Curso{
 }
 
 
-System.out.println("==================================================================================================================================================================================");
-    	System.out.println("||        HORA        ||        LUNES       ||        MARTES      ||      MIERCOLES     ||        JUEVES      ||       VIERNES      ||        SABADO      ||       DOMINGO      ||");
-    	System.out.println("==================================================================================================================================================================================");
-    	System.out.printf("||        8:00        ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 0, 14, 28, 42, 56, 70, 84);
-    	System.out.printf("||        9:00        ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 1, 15, 29, 43, 57, 71, 85);
-    	System.out.printf("||        11:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 2, 16, 30, 44, 58, 72, 86);
-    	System.out.printf("||        12:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 3, 17, 31, 45, 59, 73, 87);
-    	System.out.printf("||        13:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 4, 18, 32, 46, 60, 74, 88);
-    	System.out.printf("||        14:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 5, 19, 33, 47, 61, 75, 89);
-    	System.out.printf("||        15:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 6, 20, 34, 48, 62, 76, 90);
-    	System.out.printf("||        16:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 7, 21, 35, 49, 63, 77, 91);
-    	System.out.printf("||        17:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 8, 22, 36, 50, 64, 78, 92);
-    	System.out.printf("||        18:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 9, 23, 37, 51, 65, 79, 93);
-    	System.out.printf("||        19:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 10, 24, 38, 52, 66, 80, 94);
-    	System.out.printf("||        20:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 11, 25, 39, 53, 67, 81, 95);
-    	System.out.printf("||        21:00       ||       %sAAAAaa     ||       %sAAAAaa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 12, 26, 40, 54, 68, 82, 96);
-    	System.out.printf("||        22:00       ||       %sAAAAaa     ||       %%sAAAAa     ||      %sAAAAaa      ||       %sAAAAaa     ||      %sAAAAaa      ||     %sAAAAaa       ||      %sAAAAaa      ||\n", 13, 27, 41, 55, 69, 83, 97);
-    	System.out.println("==================================================================================================================================================================================");
+
 
 
 
