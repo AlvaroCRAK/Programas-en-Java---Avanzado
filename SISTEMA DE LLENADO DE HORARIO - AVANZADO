@@ -147,6 +147,9 @@ public class Main{
 			char lunes[], char martes[], char miercoles[],char jueves[],char viernes[], char sabado[], char domingo[],
 			char lunesa[], char martesa[], char miercolesa[], char juevesa[], char viernesa[], char sabadoa[], char domingoa[],
 					char asignaturac[], int x) {
+		
+		//==================================================================== ALGORITMO 1 ====================================================================================================
+		
 		int temp=0;
 		int b = 0;
 		switch(dia) {
@@ -267,6 +270,8 @@ public class Main{
 			char juevesc[], char viernesc[], char sabadoc[], char domingoc[]) {
 		
 		String[][] orden = new String[7][14];
+		
+		//============================================================ ALGORITMO II ====================================================================================
 		
 		for(int i=0;i<cursos;i++) {
 			if(curso[i].dia == "Lunes") {
