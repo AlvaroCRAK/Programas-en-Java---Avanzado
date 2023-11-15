@@ -43,7 +43,7 @@ public class Main{
 		for(int i=0;i<cursos;i++) {
 		
 			
-			System.out.println("Ingrese la asignatura:                                                                                                        8 letras");
+			System.out.println("Ingrese la asignatura:                                                                                                       minimo 8 letras");
 			asignatura[i] = scanner.nextLine();
 			asignaturac[i] = (char)('a' + i);
 			
