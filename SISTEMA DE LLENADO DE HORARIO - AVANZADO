@@ -56,8 +56,11 @@ public class Main{
 			}
 			char doc = asignarDocente(docente);
 			
-			System.out.println("Ingrese el dia: \nLunes     [1]\nMartes    [2]\nMiercoles [3]\nJueves    [4]\nViernes   [5]\nSabado    [6]\nDomingo   [7]");
-			int dian = scanner.nextInt();
+			int dian;
+			do {
+				System.out.println("Ingrese el dia: \nLunes     [1]\nMartes    [2]\nMiercoles [3]\nJueves    [4]\nViernes   [5]\nSabado    [6]\nDomingo   [7]");
+				dian = scanner.nextInt();
+			}while(dian !=1 && dian !=2 && dian !=3 && dian !=4 && dian !=5 && dian !=6 && dian !=7 );
 			
 			String dia = llenarDia(dian);
 			
@@ -89,7 +92,7 @@ public class Main{
 				}else if(temp != 0 ) {System.out.println("======= CRUCE DE HORARIO ======");
 				System.out.println("Vuelva a llenar el horario: \n");
 				}
-			}while(temp != 0);
+			}while(temp != 0 || salida<inicio);
 			
 			
 			curso[i] = new Curso(asignatura[i], docente, dia, inicio, salida, asignaturac[i]);
@@ -321,13 +324,13 @@ public class Main{
 		
 		
 		//============================================================ PRUEBAS =================================================================================================
-		/*for(int i=0;i<7;i++) {
+		for(int i=0;i<7;i++) {
 			for(int j=0;j<14;j++) {
 				if(orden[i][j] == null)orden[i][j] = "        ";
 				
 			}
 		}
-		*/
+		
 		//===============================================================================================================================================================
 
 		System.out.println("==================================================================================================================================================================================");
