@@ -336,21 +336,36 @@ public class Main{
 		System.out.println("==================================================================================================================================================================================");
     	System.out.println("||        HORA        ||        LUNES       ||        MARTES      ||      MIERCOLES     ||        JUEVES      ||       VIERNES      ||        SABADO      ||       DOMINGO      ||");
     	System.out.println("==================================================================================================================================================================================");
-    	System.out.printf("||        8:00        ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][0], orden[1][0], orden[2][0], orden[3][0], orden[4][0], orden[5][0], orden[6][0]);
-    	System.out.printf("||        9:00        ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][1], orden[1][1], orden[2][1], orden[3][1], orden[4][1], orden[5][1], orden[6][1]);
-    	System.out.printf("||        11:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][2], orden[1][2], orden[2][2], orden[3][2], orden[4][2], orden[5][2], orden[6][2]);
-    	System.out.printf("||        12:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][3], orden[1][3], orden[2][3], orden[3][3], orden[4][3], orden[5][3], orden[6][3]);
-    	System.out.printf("||        13:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][4], orden[1][4], orden[2][4], orden[3][4], orden[4][4], orden[5][4], orden[6][4]);
-    	System.out.printf("||        14:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][5], orden[1][5], orden[2][5], orden[3][5], orden[4][5], orden[5][5], orden[6][5]);
-    	System.out.printf("||        15:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][6], orden[1][6], orden[2][6], orden[3][6], orden[4][6], orden[5][6], orden[6][6]);
-    	System.out.printf("||        16:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][7], orden[1][7], orden[2][7], orden[3][7], orden[4][7], orden[5][7], orden[6][7]);
-    	System.out.printf("||        17:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][8], orden[1][8], orden[2][8], orden[3][8], orden[4][8], orden[5][8], orden[6][8]);
-    	System.out.printf("||        18:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][9], orden[1][9], orden[2][9], orden[3][9], orden[4][9], orden[5][9], orden[6][9]);
-    	System.out.printf("||        19:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][10], orden[1][10], orden[2][10], orden[3][10], orden[4][10],orden[5][10], orden[6][10]);
-    	System.out.printf("||        20:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][11], orden[1][11], orden[2][11], orden[3][11], orden[4][11], orden[5][11], orden[6][11]);
-    	System.out.printf("||        21:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][12], orden[1][12], orden[2][12], orden[3][12], orden[4][12], orden[5][12], orden[6][12]);
-    	System.out.printf("||        22:00       ||       %8s     ||      %8s      ||      %8s      ||       %8s     ||      %8s      ||     %8s       ||     %8s      ||\n", orden[0][13], orden[1][13], orden[2][13], orden[3][13], orden[4][13], orden[5][13], orden[6][13]);
-    	System.out.println("==================================================================================================================================================================================");
+    	System.out.printf("||        8:00        ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][0].substring(0,8), orden[1][0].substring(0,8), orden[2][0].substring(0,8), orden[3][0].substring(0,8), orden[4][0].substring(0,8), orden[5][0].substring(0,8), orden[6][0].substring(0,8));
+    	System.out.printf("||        9:00        ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][1].substring(0,8), orden[1][1].substring(0,8), orden[2][1].substring(0,8), orden[3][1].substring(0,8), orden[4][1].substring(0,8), orden[5][1].substring(0,8), orden[6][1].substring(0,8));
+    	System.out.printf("||        11:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][2].substring(0,8), orden[1][2].substring(0,8), orden[2][2].substring(0,8), orden[3][2].substring(0,8), orden[4][2].substring(0,8), orden[5][2].substring(0,8), orden[6][2].substring(0,8));
+    	System.out.printf("||        12:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][3].substring(0,8), orden[1][3].substring(0,8), orden[2][3].substring(0,8), orden[3][3].substring(0,8), orden[4][3].substring(0,8), orden[5][3].substring(0,8), orden[6][3].substring(0,8));
+    	System.out.printf("||        13:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][4].substring(0,8), orden[1][4].substring(0,8), orden[2][4].substring(0,8), orden[3][4].substring(0,8), orden[4][4].substring(0,8), orden[5][4].substring(0,8), orden[6][4].substring(0,8));
+    	System.out.printf("||        14:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][5].substring(0,8), orden[1][5].substring(0,8), orden[2][5].substring(0,8), orden[3][5].substring(0,8), orden[4][5].substring(0,8), orden[5][5].substring(0,8), orden[6][5].substring(0,8));
+    	System.out.printf("||        15:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][6].substring(0,8), orden[1][6].substring(0,8), orden[2][6].substring(0,8), orden[3][6].substring(0,8), orden[4][6].substring(0,8), orden[5][6].substring(0,8), orden[6][6].substring(0,8));
+    	System.out.printf("||        16:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][7].substring(0,8), orden[1][7].substring(0,8), orden[2][7].substring(0,8), orden[3][7].substring(0,8), orden[4][7].substring(0,8), orden[5][7].substring(0,8), orden[6][7].substring(0,8));
+    	System.out.printf("||        17:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][8].substring(0,8), orden[1][8].substring(0,8), orden[2][8].substring(0,8), orden[3][8].substring(0,8), orden[4][8].substring(0,8), orden[5][8].substring(0,8), orden[6][8].substring(0,8));
+    	System.out.printf("||        18:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][9].substring(0,8), orden[1][9].substring(0,8), orden[2][9].substring(0,8), orden[3][9].substring(0,8), orden[4][9].substring(0,8), orden[5][9].substring(0,8), orden[6][9].substring(0,8));
+    	System.out.printf("||        19:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][10].substring(0,8), orden[1][10].substring(0,8), orden[2][10].substring(0,8), orden[3][10].substring(0,8), orden[4][10].substring(0,8),orden[5][10].substring(0,8), orden[6][10].substring(0,8));
+    	System.out.printf("||        20:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][11].substring(0,8), orden[1][11].substring(0,8), orden[2][11].substring(0,8), orden[3][11].substring(0,8), orden[4][11].substring(0,8), orden[5][11].substring(0,8), orden[6][11].substring(0,8));
+    	System.out.printf("||        21:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][12].substring(0,8), orden[1][12].substring(0,8), orden[2][12].substring(0,8), orden[3][12].substring(0,8), orden[4][12].substring(0,8), orden[5][12].substring(0,8), orden[6][12].substring(0,8));
+    	System.out.printf("||        22:00       ||       %s     ||      %s      ||      %s      ||       %s     ||      %s      "
+    			+ "||     %s       ||     %s      ||\n", orden[0][13].substring(0,8), orden[1][13].substring(0,8), orden[2][13].substring(0,8), orden[3][13].substring(0,8), orden[4][13].substring(0,8), orden[5][13].substring(0,8), orden[6][13].substring(0,8));
+    	System.out.println("====================================================================================================="
+    			+ "============================================================================");
     	
 	}
 	
@@ -381,4 +396,5 @@ class Curso{
 		this.codigo = codigo;
 			
 	}
-}
+	
+}   //ZUBLIME
